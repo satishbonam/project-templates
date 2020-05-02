@@ -1,0 +1,19 @@
+{
+    "redux store template": {
+        "scope": "javascript,typescript",
+        "prefix": "rxstore",
+        "body": [
+            "import { createStore, combineReducers, applyMiddleware, compose } from 'redux';",
+            "import thunk from 'redux-thunk';",
+            "\nconst rootReducer = combineReducers({ });",
+            "\nlet composeEnhancers = compose;",
+            "\ncomposeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__",
+            "\t? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})",
+            "\t: compose;",
+            "\nconst enhancer = composeEnhancers(applyMiddleware(thunk));",
+            "\nexport const store = createStore(rootReducer, enhancer);",
+            "\nexport default store;"
+        ],
+        "description": "redux store config"
+    }
+}
