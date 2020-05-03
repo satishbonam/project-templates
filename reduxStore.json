@@ -15,5 +15,70 @@
       "\nexport default store;"
     ],
     "description": "redux store config"
+  },
+
+
+  "redux action api request": {
+    "scope": "javascript,typescript",
+    "prefix": "rxapiaction",
+    "body": [
+      "export const ${1:lableAction}Request = (payload) => ({",
+      "\ttype: ${2:lableType}_REQUEST,",
+      "\tpayload,",
+      "});",
+      "\nexport const ${1}Success = (payload) => ({",
+      "\ttype: ${2}_SUCCESS,",
+      "\tpayload,",
+      "});",
+      "\nexport const ${1}Failure = (payload) => ({",
+      "\ttype: ${2}_FAILURE,",
+      "\tpayload,",
+      "});",
+      "\nexport const ${3:lable} = (payload) => (dispatch) => {",
+      "\tdispatch(${1}Request());",
+      "\treturn axios({",
+      "\turl: '',",
+      "\tmethod: '',",
+      "})",
+      "\t.then((res) => dispatch(${1}Success(res)))",
+      "\t.catch((err) => dispatch(${1}Failure(err)));",
+      "};",
+    ],
+    "description": "redux thunk api config"
+  },
+
+  "redux actionTypes api request": {
+    "scope": "javascript,typescript",
+    "prefix": "rxapitype",
+    "body": [
+      "export const ${1:labelType}_REQUEST = '${1}_REQUEST';",
+      "export const ${1}_SUCCESS = '${1}_SUCCESS';",
+      "export const ${1}_FAILURE = '${1}_FAILURE';",
+    ],
+    "description": "redux thunk api config"
+  },
+
+
+  "redux reducer api request": {
+    "scope": "javascript,typescript",
+    "prefix": "rxapireducer",
+    "body": [
+      "case ${1:labelType}_REQUEST:",
+      "\treturn {",
+      "\t...state,",
+      "\tisloading: true,",
+      "\t};",
+      "\ncase ${1}_SUCCESS:",
+      "\treturn {",
+      "\t...state,",
+      "\tisloading: false,",
+      "\t};",
+      "\ncase ${1}_FAILURE:",
+      "\treturn {",
+      "\t...state,",
+      "\tisloading: false,",
+      "\t};",
+    ],
+    "description": "redux thunk api config"
   }
 }
